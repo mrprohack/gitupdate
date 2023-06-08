@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Script for adding, committing, and pushing changes to a Git repository
+
+set -e # Exit immediately if any command exits with a non-zero status
+
+# Check if commit message was provided as a command-line argument
+if [ -z "$1" ]
+then
+    echo "Please provide a commit message."
+    echo "ex: gitupdate \"fix a code \" "
+    exit 1
+fi
+git add .
+# Commit changes with the provided message
+git commit -am "$1"
+
+# Push changes to the remote repository
+git pull # Make sure the repository is up-to-date with the remote
+git push
+
+# Check if there were any errors during the push
+if [ $? -ne 0 ]
+then
+    echo "Error: Failed to push changes."
+    exit 1
+fi
+
+# Run tests
+# ...
+# ...
+
+# If tests passed, exit with success code
+exit 0
+
