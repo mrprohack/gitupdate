@@ -8,7 +8,7 @@ set -e # Exit immediately if any command exits with a non-zero status
 if [ -z "$1" ]
 then
     echo "Please provide a commit message."
-    echo "ex: gitupdate \"fix a code \" "
+    echo "ex: gitupdate \"fixd a code \" "
     exit 1
 fi
 git add .
